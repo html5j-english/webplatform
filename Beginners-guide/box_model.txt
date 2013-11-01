@@ -1,0 +1,140 @@
+Summary
+概要
+
+This article describes how you can use CSS to control the space that an element takes up when it is displayed.
+この記事では、要素の表示される間隔を調整するためにCSSを使う方法について記します。
+
+Information: Boxes
+ボックスについて
+
+When your browser displays an element, the element takes up space. There are four parts to the space that it takes up.
+ブラウザは要素を表示する際に間隔を取ります。間隔を取る箇所は4つあります。
+
+In the middle, there is the space that the element needs to display its content. Around that, there is padding. Around that, there is a border. Around that, there is a margin that separates the element from other elements.
+まず、要素は中央に表示されます。その周りには、パディングが存在します。そしてその周りはボーダーです。さらにその周りのマージンにより、要素がその他と分離されます。
+
+図表省略
+
+The padding, border and margin can have different sizes on the top, right, bottom and left of the element. Any or all of these sizes can be zero.
+パディング、ボーダー、およびマージンは、要素の上下左右それぞれに異なるサイズを取ることができます。これらのいずれか、もしくは全部のサイズはゼロになる場合があります。
+
+Coloring
+色
+
+The padding is always the same color as the element's background. So when you set the background color, you see the color applied to the element itself and its padding.
+パディングは、常に要素の背景色と同じ色になります。もし背景色を設定した場合には、その色が、その要素自身とパディングに対して適用されます。
+
+The margin is always transparent.
+マージンは、常に透過です。
+
+図表省略
+
+You can use borders to decorate elements with lines or boxes. To specify the same border all around an element, use the Template:cssxref("border")property. Specify the width (usually in pixels for display on a screen), the style, and the color.
+要素をボーダーを使って線、枠で装飾することができます。
+要素の四方に同じボーダーを指定するためには、ボーダープロパティを使用します。
+幅(通常はスクリーンに表示されているピクセル)、スタイル、色を指定します。
+
+The styles are:
+スタイル: 
+
+図表省略
+
+You can also set the style to none or hidden to explicitly remove the border, or set the color to transparent to make the border invisible without changing the layout.
+スタイルにnoneまたは、hiddenを設定し、明示的にボーダーを削除することもできます。また、色に透過を設定してレイアウトを変更せずにボーダーを非表示にすることができます。
+
+To specify borders one side at a time, use the properties: Template:cssxref("border-top"), Template:cssxref("border-right"), Template:cssxref("border-bottom"), Template:cssxref("border-left"). 
+上下左右のボーダーを個別に指定する場合には、個々のプロパティ（borer-top、border-right、border-bottom、border-left）を利用します。
+
+You can use these to specify a border on only one side, or different borders on different sides.
+これらのプロパティを利用すると、上下左右のボーダーをひとつだけ指定したり、それぞれ違うボーダーを指定したりすることができます。
+
+Border example
+ボーダーの例
+
+This rule sets the background color and the top border of heading elements:
+見出し要素の背景色と上ボーダーの規則集合: 
+
+h3 {
+  border-top: 4px solid #7c7; /* mid green */
+  background-color: #efe;     /* pale green */
+  color: #050;                /* dark green */
+}
+The result looks like:
+Note: add screenshot to show what this should look like.
+
+This rule makes images easier to see by giving them a mid-gray border all round:
+画像を灰色のボーダーで囲むことによって見やすくする規則:  
+
+img {border: 2px solid #ccc;}
+The result looks like:
+Note: add screenshot to show what this should look like.
+
+Margins and padding
+マージンとパディング
+
+You use margins and padding to adjust elements' positions and to create space around them.
+margin（要素外の余白幅） と padding（要素内の余白幅） を使うと、要素の位置や要素のまわりのスペースを調整することができます。
+
+Use the Template:cssxref("margin") property or theTemplate:cssxref("padding") property to set the margin or padding widths respectively.
+margin、paddingを設定することで、要素外の余白幅、要素内の余白幅をそれぞれ設定することができます。
+
+If you specify one width, it applies all around the element (top, right, bottom and left). If you specify two widths, the first applies to the top and bottom, the second to the right and left. You can specify all four widths in the order: top, right, bottom, left.
+幅に数値をひとつ指定すると、その値は四方（上、右、下、左）に適用されます。数値をふたつ指定すると、ひとつ目の数値は上と下に、ふたつ目の数値は右と左に適用されます。上、右、下、左の順番で、四方すべての数値を別々に指定することもできます。
+
+Margin and padding example
+margin と padding の使用例
+
+This rule marks out paragraphs with the class remark by giving them a red border all round. Padding all round separates the border from the text a little. A left margin indents the paragraph relative to the rest of the text:
+この例では、remarkクラスを使用して、段落を赤の枠線で囲んでいます。
+paddingの指定で、テキストと枠線の間にに4pxの幅が作られます。margin-leftの指定では、この段落要素の左側にある要素との間に、相対的に幅が作られます。
+
+p.remark {
+  border: 2px solid red;
+  padding: 4px;
+  margin-left: 24px;
+}
+The result looks like:
+Note: add screenshot to show what this should look like.
+
+More details
+さらに詳しく
+
+When you use margins and padding to adjust the way elements are laid out, your style rules interact with the browser's defaults in ways that can be complex. Different browsers lay elements out differently. The results might look similar until your stylesheet changes things. Sometimes this can make your stylesheet give surprising results.
+要素がどのようにレイアウトされるかを調整するためにmarginやpaddingを使用するときは、作成したスタイルルールはブラウザのデフォルトルールと複雑に作用しあいます。ブラウザが異なると、要素をどうレイアウトするかも異なります。作成したスタイルシートが何も変更していない間は、レイアウト結果は似たようなものになるかもしれません。そのため、作成したスタイルシートが思わぬレイアウト結果につながることもときどきあります。
+
+To get the result you want, you might have to change your document's markup. The next page of this tutorial has more information on this. For detailed information about padding, margins and borders, see the Box model reference page.
+期待どおりのレイアウト結果を得るためには、ドキュメントのマークアップを変更しなければならないこともあるかもしれません。これについては、チュートリアルの次のページで詳しく述べます。padding, margin, boderに関する更に詳しい情報は、Boxモデルのリファレンスページを参照してください。
+
+Action: Adding borders
+課題: ボーダーを追加する
+
+Edit your CSS file, style2.css. Add this rule to draw a line across the page over each heading:
+作成したCSSファイル style2.css を編集し、下記のルールを追加し、ページ内の各ヘディング要素に線を引いてください。
+
+h3 {border-top: 1px solid gray;}
+
+If you took the challenge on the last page, modify the rule you created, otherwise add this new rule to add space underneath each list item:
+前のページの課題を実施した場合は、すでに作成したルールを修正するか、各リストアイテムの下に余白を追加するために下記の新規ルールを追加してください。
+
+li {
+  list-style: lower-roman;
+  margin-bottom: 8px;
+}
+
+Refresh your browser to see the result:
+ブラウザを更新して、結果を確認してください。
+
+Need to add in a screenshot to show what this should look like.
+(結果がどう見えるかわかるスクリーンショットを追加する必要あり)
+
+See also
+Exercise questions
+練習問題
+Add one rule to your stylesheet, making a wide border all around the oceans in a color that reminds you of the sea.
+スタイルシートに1つルールを追加して、リスト項目全体のまわりに海を連想するような色で幅の広い枠をつけてください。
+
+This article contains content originally from external sources, including ones licensed under the CC-BY-SA license. 
+この記事には、外部で作成されたコンテンツが含まれ、それらの一部はCC-BY-SAでライセンスされています。
+
+Portions of this content copyright 2012 Mozilla Contributors. This article contains work licensed under the Creative Commons Attribution-Sharealike License v2.5 or later. The original work is available at Mozilla Developer Network: Article
+このコンテンツの一部の権利は 2012 Mozilla Contributersにあります。この記事には、Creative Commons Attribution-Sharealike License v2.5またはそれ以上でライセンスされたものを含みます。オリジナルはMozilla Developer Networkで入手できます。Article
