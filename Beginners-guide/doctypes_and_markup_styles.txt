@@ -1,0 +1,87 @@
+DOCTYPES and markup styles
+
+DOCTYPE宣言とマークアップ方法
+
+Summary
+要約
+
+In this article we will explore the different doctypes you are likely to come across on your journey around the Web, as well as look at how XHTML and HTML differ.
+
+この記事では、Web上で出くわす様々なDOCTYPEをXHTMLとHTMLの違いと一緒に、見ていきたいと思います。
+
+Introduction
+序論
+
+The doctype appears just above the <html> tag, at the very start of each document you write:
+DOCTYPE宣言は、<html>の直前に位置し、あなたが作成するそれぞれのドキュメントのスタートです。
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My fabulous document</title>
+
+   ... etc
+
+The doctype explains what type of HTML is to be expected and therefore what spec validators (for example the W3C HTML validator) should validate your document against.
+DOCTYPE宣言は、予想されるHTMLのタイプと、バリデータ（例えばW3CのHTMLバリデータ）があなたの文書を検証する仕様を説明します。
+
+
+Standards versus quirks mode
+標準 vs quirksモード
+
+The doctype also serves to make the browser render the page in so called "standards mode". In standards mode, browsers generally try to render the page according to the CSS specifications — they trust that the person who created the document knew what they were doing.
+DOCTYPEはブラウザがページを「標準モード」と呼ばれるモードで描画するようにします。
+標準モードでは、ブラウザは通常ページをCSS仕様に従って描画するよう試みます。
+ブラウザは、ドキュメントを作った人が、彼らがなにをしていたかを知っていると信頼しています。
+
+On the other hand, if a browser finds an outdated, incomplete or missing doctype at the start of the page, they use “quirks mode”, which is more backwards compatible with old practices and old browsers. Quirks mode assumes that the document is old or that it has not been created with web standards in mind — it means that the web page will still render, but the browser will work a bit harder in doing so, and you’ll likely get a strange or ugly result, which you weren’t quite expecting. The differences are mostly related to how CSS is rendered, and only in a few cases about how the actual HTML is treated. As a web designer or developer, you will get the most consistent results by making sure that all browsers use their Standards rendering mode, hence you should stick to web standards, and use a proper doctype!
+一方、もしブラウザがページのはじめで古い不完全なDOCTYPEを見つけるか、あるいはなかったら、古いやり方、古いブラウザ向けに後方互換の「quirksモード」を使います。
+Quirksモードは、そのドキュメントが古い、あるいはWeb標準の考え方で作られていないと仮定します。
+それは、そのWebページはいまだに同じように描画されようとしますが、しかしブラウザはそれをするのはややむずかしく、そしてあなたは期待とは違うおかしいかあるいは見苦しい結果を得ることを意味します。
+
+The HTML5 doctype and friends
+HTML5と、その他のDOCTYPE
+
+In this course, we are sticking with the HTML5 doctype:
+このコースでは、わたしたちは、HTML5のDOCTYPEを学んでいきます。
+
+<!DOCTYPE html>
+
+There is no disadvantage to using this doctype, and it is certainly a lot easier to remember than the others!
+
+DOCTYPEを使用して、不利なことはいっさいありません。さまざまなことが必ず楽にできます。
+
+This is the one we'd recommend you use going forward, as even if you don't plan to start using any of the new HTML5 features in your work yet, it will still validate most of the HTML 4/XHTML 1.0 features (there are a couple of exceptions where features have been removed from the spec, but as you'll learn later, validation is merely a useful tool, and not the be all and end all of everything), and will be future proof for when you do start using new HTML5 features. 
+何かしらHTML5を使い始める業務が無いようでしたら、これからに備えて強くオススメしたいことがあります。
+HTML 4/XHTML 1.0の多くはまだ動作しています。
+（例外が2つあります。ただ単に削除された想定外の特徴2つ
+バリデーションは、単に使いやすいツールで、それですべてが終わるわけではないことが、いずれ分かるでしょう。）
+HTML5を使い始めた時、証明されるはずです。
+
+There are however, other doctypes that you may come across when working on various projects.
+でも、さまざまなプロジェクトが進む時、あなたは他のDOCTYPEを扱うことになるでしょう。
+
+Let's look at some of the others you might bump into.
+では、あなたがぶち当たる他のDOCTYPEを見ていきましょう。
+
+HTML versus XML syntax
+HTMLとXML構文
+
+Table 1 shows the main syntax differences between HTML and XHTML:
+表1はHTMLとXHTMLの主な構文の違いを表しています。
+
+HTML
+
+Elements and attributes are case insensitive, eg <h1> is the same thing as <H1>.
+要素と属性は大文字と小文字を区別しない。例: <h1>は<H1>と同等。
+
+Certain elements don’t need a closing tag (eg paragraphs, <p>), while others (called “empty elements”) shouldn't have a closing tag (eg images, <img>).
+いくつかの要素は終了タグを必要としません。（例: 段落, <p>）
+一方で、他の要素（空要素と呼ばれるもの）は、終了タグを持つべきではない。
+
+Attribute values may be written without being enclosed in quotes.
+属性値は引用符で囲まずに書くこともできる。
+
+Shorthand can be used for certain attributes (ie <input required>).
+属性値の省略はいくつかの属性で利用できる。（	例: <input required>)
