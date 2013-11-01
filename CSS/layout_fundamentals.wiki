@@ -1,0 +1,314 @@
+== Information: Layout ==1000ch
+ 
+You can use CSS to specify various visual effects that change the layout of your document. Some of the techniques for specifying layout are advanced, and beyond the scope of this basic tutorial. When you design a layout to look similar in many browsers, your stylesheet interacts with the browser's default stylesheet and layout engine in ways that can be complex. This is also an advanced subject, beyond the scope of this basic tutorial.
+
+This page describes some simple techniques that you can try.
+
+== レイアウトについて ==
+
+CSSは、ドキュメントのレイアウトに様々な視覚効果を加えるために使えます。レイアウトのためのテクニックは進歩してきており、基本的なチュートリアルの域を超えてしまいます。様々なブラウザで同じレイアウトをするためには、スタイルシートをブラウザの標準のスタイルシートやレイアウトエンジンに、複雑に作用させる必要があります。これもまた、基本的な部分には収まりません。
+
+本頁では簡単にトライできるような簡単なテクニックについて紹介します。
+
+ 
+=== Document structure === restard
+=== ドキュメント構造 ===
+ 
+If you want to control the layout of your document, then you might have to change its structure. Your document's markup language might have general-purpose tags for creating structure. For example, in HTML you can use the {{ HTMLElement("div") }} element to create structure.
+
+ドキュメントのレイアウトを操作するためには、構造を変える必要があります。構造を構築するためには、ドキュメントのマークアップ言語は汎用的なものであるほうがいいです。例えば、HTMLの中ではHTMLのタグ要素divで構造を構築できます。
+
+Div usage example 
+
+Divの使い方の例
+
+In your sample document, the numbered paragraphs under the second heading do not have a container of their own. Your stylesheet cannot draw a border around those paragraphs, because there is no element to specify in the selector.
+
+サンプルドキュメントの中で、二つ目の見出しの下の番号が降られている段落は自分自信のコンテナーを持っていません。そのセレクターに特定できる要素が無いため、スタイルシートでこれらの段落に枠線を付けることができません。
+ 
+To fix this structural problem, you can add a {{ HTMLElement("div") }} tag around the paragraphs. This tag is unique, so it can by identified by an <code>id</code> attribute:
+
+この構造的な問題は、段落を囲むdivタグを加えると直せます。このdivタグは固有なものなので、id属性で特定することができます。
+ 
+<syntaxhighlight lang="html5"><h3>Numbered paragraphs</h3>
+<div id="numbered">
+  <p>Lorem ipsum</p>
+  <p>Dolor sit</p>
+  <p>Amet consectetuer</p>
+  <p>Magna aliquam</p>
+  <p>Autem veleum</p>
+</div></syntaxhighlight>
+ 
+Now your stylesheet can use one rule to specify borders around both lists:
+
+下記のように、スタイルシートでリスト両方とも枠線を付けるルールが使えるようになります。
+
+<syntaxhighlight lang="css">ul, #numbered {
+  border: 1em solid #69b;
+  padding-right:1em;
+}</syntaxhighlight>
+ 
+The result looks like:
+
+その結果はこのようになります。
+
+[[Image:layout-fundamentals-fig-1.png|alt=Screenshot of the Mozilla Firefox browser showing paragraph tags within a structural div container]]
+  
+=== Size units === ginpei
+
+=== 大きさの単位 ===
+ 
+So far in this tutorial, you have specified sizes in pixels (<code>px</code>). These are appropriate for some purposes on a display device like a computer screen. But when the user changes the font size, your layout can look wrong.
+
+ここまでのチュートリアルで、ピクセル(<code>px</code>)のサイズについて述べてきました。これはコンピューターのスクリーンのようなディスプレイデバイスで使う要件を満たしています。しかし、しかしユーザーがフォントサイズを変更した際、レイアウトはおかしく見えてしまいます。
+
+For many purposes it is better to specify sizes as a percentage or in ems (<code>em</code>). An em is nominally the size of the current font (the width of a letter m). When the user changes the font size, your layout adjusts automatically.
+
+多くの場面では、サイズをパーセントやems (<code>em</code>)で定義した方が良いでしょう。emは現在のフォント（文字mの幅）の名目上のサイズです。ユーザーがフォントサイズを変更したとき、レイアウトは自動的に調節されます。
+
+===Sizing example===
+
+===サイズの例===
+
+@ogaoga
+
+The border on the left of this text has its size specified in pixels. The border on the right has its size specified in ems. In your browser, change the size of the font to see how the border on the right adjusts but the border on the left does not:
+
+このテキストの左側のボーダーのサイズはピクセルで指定されています。右側のボーダーは、”em” で指定されています。ブラウザ（のデバッグツール）で、テキストのフォントサイズを変更すると、右側のボーダーは調整されますが、左側のボーダーは調整されません。
+
+<p class="note">Note: provide screenshot to show what result should look like</p>
+ 
+<p class="note">メモ：結果がどのように見えるべきかを示すためにスクリーンショットを追加する。</p>
+
+For other devices, other length units are appropriate. There is more information about this in a later page of this tutorial. For full details of the values and units that you can use, see [[Values]] in the CSS Specification.
+
+他のデバイスでは、他の単位の方が適切です。詳しくはこの後で説明します。使用できるすべての値と単位の詳細は、CSS 使用の [[Values]] を参照してください。
+
+=== Text layout === 
+ 
+=== テキストレイアウト ===
+
+Two properties specify how the content of an element is aligned. You can use them for simple layout adjustments:
+
+要素の内容を整列させるために特に2つのプロパティが使えます．単純なレイアウト調整に使えます．
+
+{{ cssxref("text-align") }} 
+Aligns the content. Use one of these values: <code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code> 
+{{ cssxref("text-indent") }} 
+Indents the content by an amount that you specify. 
+ 
+{{ cssxref("text-align") }} 
+は、コンテンツの揃えを指定します。下記のどれか１つの値を指定します: <code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code> 
+{{ cssxref("text-indent") }} は、指定した値の総和で（？）コンテンツのインデントを指定します。
+
+These properties apply to any text-like content in the element, not only to actual text. Remember that they are inherited by the element's children, so you might have to explicitly turn them off in the children to avoid surprising results.
+
+これらのプロパティは、実際のテキストだけではなく、要素内のいずれのテキスト（のような）コンテンツに適用されます。またそれらのプロパティは、その要素の子要素によって継承されるため、予想外の結果にならないように、子要素内で明示的にオフにする必要があるかもしれないことを覚えておいてください。
+
+===Text align example=== ginpei
+
+=== text-alignの例 ===
+
+To center headings:
+
+見出しを中央に表示する例です。
+
+<syntaxhighlight lang="css">h3 {
+  border-top: 1px solid gray;
+  text-align: center;
+}</syntaxhighlight>
+ 
+Resulting in:
+
+このように表示されます。
+
+<p class="note">Note: provide screenshot to show what result should look like</p>     
+
+<p class="note">ノート: どう見えるかスクリーンショットを用意してください</p>
+
+In an HTML document, the content that you see below a heading is not structurally contained by the heading. So when you align a heading like this, the tags below the heading do not inherit the style.
+
+見出しの下の内容はHTML文書の構造として見出しに含まれません。そこでこのように見出しを配置する事で、見出しの下のタグはスタイルを継承しません。
+
+=== Floats ===
+
+@ogaoga
+ 
+The {{ cssxref("float") }} property forces an element to the left or right. This is a simple way to control its position and size.
+
+{{ cssxref("float") }} プロパティは、要素を左、もしくは右に寄せ（て配置し）ます。これは、位置やサイズを制御する簡単な方法です。
+
+The rest of the document's content normally flows around the floated element. You can control this by using the {{ cssxref("clear") }} property on other elements to make them stay clear of floats.
+
+これ以降のコンテンツは通常、浮動要素を回り込むようになります。他の要素に {{ cssxref("clear") }} プロパティを使用することで、回り込みを解除することができます。
+ 
+===Floats example=== ginpei
+
+=== フロートの例 ===
+ 
+In your sample document, the lists stretch across the window. You can prevent this by floating them to the left. To keep the headings in place, you must also specify that they stay clear of floats on their left:
+
+例示した文書では、リストがウィンドウいっぱいに広がります。左へフロートさせる事でこれを防ぐ事が出来ます。見出しの位置を変えないため、左側のフローロを解除するよう設定すると良いでしょう。
+
+<syntaxhighlight lang="css">ul, #numbered {float: left;}
+h3 {clear: left;}</syntaxhighlight>
+  
+The result looks like:
+
+このようになります。
+
+<p class="note">Note: provide screenshot to show what result should look like</p>
+
+<p class="note">ノート: どう見えるかスクリーンショットを用意してください</p>
+ 
+(A little padding is needed on the right of the boxes, where the border is too close to the text.)
+
+（枠線が文字に近すぎる場合はボックスの右側に少し隙間を開けた方が良いでしょう。）
+ 
+=== Positioning === ginpei
+
+=== 位置 ===
+ 
+You can specify an element's position in four ways by specifying the {{ cssxref("position") }} property and one of the following values.
+
+要素の位置を定めるには{{ cssxref("position") }}プロパティとそれに続くひとつの値による、四つの方法があります。
+ 
+These are advanced properties. It is possible to use them in simple ways—that is why they are mentioned in this basic tutorial. But using them for complex layouts can be difficult.
+
+これらは高度なプロパティです。ベーシックチュートリアルの方で触れましたが、簡単に使う事も出来ました。しかし複合的なレイアウトのために使うのは難しいでしょう。
+
+   <code>relative</code> 
+    The element's position is shifted relative to its normal position. Use this to shift an element by a specified amount. You can sometimes use the element's margin to achieve the same effect.  
+
+要素の位置が標準の位置からずらされます。指定量だけ要素をずらすのに使います。代わりにmarginを使う場合も多いでしょう。
+
+<code>fixed</code> 
+    The element's position is fixed. Specify the element's position relative to the document window. Even if the rest of the document scrolls, the element remains fixed.  
+
+要素の位置が固定されます。ドキュメントウィンドウからみた要素の位置を指定します。ドキュメントがスクロールされても要素は同じ位置に残ります。
+
+<code>absolute</code> 
+    The element's position is fixed relative to a parent element. Only a parent that is itself positioned with <code>relative</code>, <code>fixed</code> or <code>absolute</code> will do. You can make any parent element suitable by specifying <code>position: relative;</code> for it without specifying any shift.  
+
+要素の位置が親要素に対して固定されます。親要素はpositionに<code>relative</code>や <code>fixed</code>、<code>absolute</code>が指定されたものです。何かをこの親要素としたい場合は<code>position: relative;</code>を指定し、ずらす指定はしないという方法が使えます。
+
+<code>static</code> 
+    The default. Use this value if you need to turn positioning off explicitly.  
+
+初期値。位置指定を明示的にオフにしたい場合に使います。
+
+Along with these values of the <code>position</code> property (except for <code>static</code>), specify one or more of the properties: <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>, <code>width</code>, <code>height</code> to identify where you want the element to appear, and perhaps also its size.
+
+<code>position</code>プロパティ(<code>static</code>以外)の指定を踏まえて、要素がどの位置、どのサイズで表示されるかを<code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>, <code>width</code>, <code>height</code>といったプロパティで指定します。
+ 
+===Positioning  example=== restard
+===ポジショニングの例===
+ 
+To position two elements on top of each other, create a parent container in your document with the two elements inside it:
+
+二つの要素をそれぞれトップに位置づけするためには、ドキュメントにその二つの要素を入れた親のコンテナーを作ります。
+ 
+<syntaxhighlight lang="html5"><div id="parent-div">
+  <p id="forward">/</p>
+  <p id="back">\</p>
+</div></syntaxhighlight>
+ 
+In your stylesheet, make the parent's position <code>relative</code>. There is no need to specify any actual shift. Make the children's position <code>absolute</code>:
+
+スタイルシートには、親のコンテナーのpositionをrelativeにします。この設定による実際の変化は起こりません。そして、子要素のpositionをabsoluteにしましょう。
+ 
+<syntaxhighlight lang="css">#parent-div {
+  position: relative;
+  font: bold 200% sans-serif;
+}
+
+#forward, #back {
+  position: absolute;
+  margin:0px; /* no margin around the elements */
+  top: 0px; /* distance from top */
+  left: 0px; /* distance from left */
+}
+
+#forward {
+  color: blue;
+}
+
+#back {
+  color: red;
+}</syntaxhighlight>
+ 
+The result looks like this, with the backslash on top of the forward slash:
+
+その結果は、スラッシュの上にバックスラッシュ来る、このようになります。
+
+<p class="note">Note: provide screenshot to show what result should look like</p>  
+   
+===More details===1000ch
+
+The full story on positioning takes up two complex chapters in the CSS Specification: [[Visual formatting model]] and [[Visual formatting model details]].
+ 
+If you are designing stylesheets to work in many browsers, then you also need to take into account differences in the way browsers interpret the standard, and perhaps bugs in particular versions of particular browsers.
+
+CSSを使ったポジショニングの歴史は、2つの複雑なポイントが占めています。視覚整形モデルとその詳細です。
+
+いろんなブラウザで動くようにスタイルシートを書こうとする場合、各ブラウザの標準仕様との差異や、各ブラウザの各バージョンに存在するであろう不具合を考慮する必要があります。
+
+== Action: Specifying layout ==
+
+== アクション：レイアウトを指定する ==
+
+@ogaoga
+
+<ol> 
+<li><p>Change your sample document, <code>doc2.html</code>, and stylesheet, <code>style2.css</code>, using the examples above in the sections [[Document structure]] and [[Floats]].</p></li>
+<li><p>In the [[Floats]] example, add padding to separate the text from the right border by 0.5 em.</p></li>
+</ol>
+
+<ol> 
+<li><p>上記の [[Document structure]] と [[Floats]] セクションのサンプルを使用して、サンプルドキュメントの <code>doc2.html</code> と、スタイルシート <code>style2.css</code> を変更します。</p></li>
+<li><p>[[Floats]] のサンプルで、右側のボーダーとテキストとの間に 0.5em のパディングを追加します。</p></li>
+</ol>
+
+}}
+{{Notes_Section}}
+{{Compatibility_Section
+|Not_required=Yes
+|Desktop_rows=
+|Mobile_rows=
+|Notes_rows=
+}}
+{{See_Also_Section
+|Manual_sections====Exercise questions=== 
+
+<ol>
+<li><p>Change your sample document, <code>doc2.html</code>, adding this tag to it near the end, just before <code>&lt;/body&gt;.</code></p>
+
+<pre>&lt;img id="fixed-pin" src="Yellow-pin.png" alt="Yellow map pin"&gt;</pre>
+ 
+<p>If you did not download the image file earlier in this tutorial, download it now, and place it in the same directory as the other sample files:</p>
+</li>
+ <li>
+<p>Predict where the image will appear in your document. Then refresh your browser to see if you were correct.</p>
+</li>
+ <li>
+<p>Add a rule to your stylesheet that places the image in the top right of your document.</p>
+</li>
+<li>
+ <p>Refresh your browser and make the window small. Check that the image stays in the top right even when you scroll your document</p>
+</li>
+</ol>
+
+<p class="note">Note: provide screenshot to show what result should look like</p>
+}}
+{{Topics|CSS}}
+{{External_Attribution
+|Is_CC-BY-SA=Yes
+|Sources=MDN
+|MDN_link=https://developer.mozilla.org/en-US/docs/CSS/Getting_Started/Layout
+|MSDN_link=
+|HTML5Rocks_link=
+}}
+
+
+
+
