@@ -1,0 +1,198 @@
+Summary
+
+Now it is time to get your hands dirty. This article provides a basic introduction to coding with JavaScript.
+
+概要
+
+今度は手を動かすときです。この記事ではJavaScriptを使用しコーディングの基本的な概要について説明します。
+
+Introduction
+In this article of the Web Standards Curriculum, we will cover the basics of JavaScript — how and where to use it, what problems to avoid, and general basics to get you started on your journey towards becoming a top-notch JavaScript developer.
+
+はじめに
+
+このWeb標準カリキュラムでは、JavaScriptの基礎を説明します。
+一般的な基礎知識や、どこで何をすれば、どんな問題を回避できるかなど、一流のJavaScript開発者になるための旅の助けになってくれると思います。
+
+What is JavaScript and how do you execute it?
+
+JavaScriptは、一体どのように実行されるのでしょう？
+
+
+JavaScript is a text-based language that does not need any conversion before being executed. Other languages likeJava and C++ need to be compiled to be executable but JavaScript is executed instantly by a type of program that interprets the code called a parser (pretty much all web browsers contain a JavaScript parser).
+
+JavaScriptはテキストベースの言語で、実行前に変換する必要がありません。JavaやC++のような他の言語は、実行可能にするためコンパイルする必要があります。しかしJavaScriptはパーサーと呼ばれる、コードインタープリターにより、即座に実行されます。(ほぼすべてのブラウザーはJavaScriptパーサーを搭載しています。)
+
+To execute JavaScript in a browser you have two options — either put it inside a script element anywhere inside an HTML document, or put it inside an external JavaScript file (with a .js extension) and then reference that file inside the HTML document using an empty script element with a src attribute. We will look at both of these methods inside this section.
+
+ブラウザでJavaScriptを実行する方法は２つあります。つまりHTMLドキュメント内のどこかにscript要素を置くか、JavaScriptの外部ファイル（.jsの拡張子）を置くやり方で、HTMLドキュメント内にsrc属性を持った空のscript要素つくり、そのファイルを参照します。このセクションではこの二つのやり方の両方を見ていきましょう。
+
+JavaScript does not have to stay inside browsers. To run JavaScript in console environment, please check out Mozilla Rhino; to run JavaScript in server environment, please check node.js.
+
+JavaScript は ブラウザ内で実行する必要はありません。コンソール環境でJavaScriptを実行するには、Mozilla Rhino を確認してください。サーバー環境でJavaScriptを実行するには node.js でチェックしてください。
+
+Including your JavaScript inside your HTML document
+
+HTMLドキュメントにJavaScriptを記述する
+
+The most basic inclusion of JavaScript inside your HTML page would look something like this:
+<script>
+  var x = 3;
+  alert('hello there, I am JavaScript - x is ' + x);
+</script>
+
+HTMLページに以下のような、基礎的なJavaScriptを記述します:
+
+<script>
+  var x = 3;
+  alert('こんにちは、わたしは JavaScript です。x = ' + x);
+</script>
+
+
+You could put this anywhere inside your document and it would execute, but some places are definitely better than others — see the Where to put JavaScript section for guidance on this.
+
+ページ内の任意の場所に置くことができ、それを実行することができますが、いくつかの場所は他より間違いなく優れている。具体的には「JavaScriptのセクションを置くには」を参照してください。
+
+As there might be several different types of script available to use on web pages in the future, it makes sense to add the name of the script you are using as a MIME type:
+
+将来は様々なタイプのスクリプトを使用できるようになるかもしれません。そこで使用しているスクリプトをMIMEタイプとして追加しておくとよいでしょう。
+
+<script type="text/javascript">
+  var x = 3;
+  alert('こんにちは、わたしは JavaScript です。x = ' + x);
+</script>
+
+Note: You will find script examples on the web that have a language="javascript" attribute. This is not part of any standard and is utterly useless; delete this where you can. This is a throwback to the bad old days, when VBScript was also in popular use on web pages. VBScript usage died however, as it only works in IE.
+
+注: language="javascript" 属性が指定されたスクリプトの例題をWeb上で見つけることがあるでしょう。この記述は標準でなく、まったく意味がありません。もしあなたがこれを見つけたら、まねする必要はありません。これはVBScriptはまだ一般的だった、古い時代の遺物です。VBScriptはIEでしか動作せず、もはや使用されていません。
+
+In the past there was a need to comment out JavaScript with an HTML comment to prevent browsers from showing the code as HTML. As this only applies to very old browsers you do not need to bother with that any longer. However, if you are using strict XHTML as your DOCTYPE, you need to enclose any JavaScript in a CDATA block to make it validate (do not worry about why - it is not really important at this stage in your learning):
+<script type="text/javascript">
+/* <![CDATA[ */
+  var x = 3;
+  alert('こんにちは、わたしは JavaScript です。 x is ' + x);
+/* ]]> */
+</script>
+
+昔はブラウザがHTMLとしてJavaScriptのコードを表示してうことを防ぐためにHTMLのコメントでJavaScriptをコメントアウトする必要がありました。これをすれば古いブラウザに対応するだけでなら、もう頭を悩ます必要はありません。
+しかし、DOCTYPEでstrictなXHTMLを使うのであれば、コードを有効にするためにCDATAプロックでJavaScriptを囲む必要があります（何故なのかは気にしないで下さい。つまり学習の段階でそのことはそれほど重要ではないからです）。
+
+<script type="text/javascript">
+/* <![CDATA[ */
+  var x = 3;
+  alert('hello there, I am JavaScript - x is ' + x);
+/* ]]> */
+</script>
+
+However, for strict XHTML documents, it is much more sensible not to embed any JavaScript but instead keep it in an external document.
+
+しかしstrictなXHTMLドキュメントにはJavaScriptを組み込むべきでなく、外部ファイルとして記述すべきです。
+
+Linking to an external JavaScript file
+
+In order to link to an external JavaScript (either on the same server or anywhere on the internet) all you have to do is to add a src attribute to your script element:
+<script type="text/javascript" src="myscript.js"></script>
+
+外部 JavaScript ファイルのリンクするために
+
+（同じサーバー上またはどこかのインターネット上で）外部JavaScriptにリンクするためにしなければならないことは script 要素に src 属性を追加することです：
+<script type="text/javascript" src="myscript.js"></script>
+
+
+Upon meeting this element in a page, browsers will then load the file myscript.js and execute it. Any content inside the script element itself will be skipped when you provide a src attribute. The following example will load the file myscript.js and execute the code in it, but will not execute the alert inside the script element at all.
+
+
+ページ内でこの要素を見つけると、ブラウザーはmyscript.jsをロードし、実行します。src属性を持つscript要素の内容はすべて無視されます。以下の例題ではmyscript.jsがロードされ、ファイルに記述されたコードが実行されます。script要素の内容であるalertは実行されません。
+
+<script type="text/javascript" src="myscript.js">
+  alert('I am pointless as I will not be executed');
+</script>
+
+
+
+Keeping your code in an external JavaScript file makes a lot of sense:
+
+外部JavaScriptファイルにコードを保存しておくことは良いことです
+
+
+You can apply the same JavaScript functionality to several HTML documents and still keep maintenance easy: if there is a desired change in functionality all you need to do is change one single file.
+
+いくつかのHTMLドキュメントに同じJavaScriptの機能を適用しても、メンテナンスを容易に保つことができます。機能の変更がある場合、行う必要がある作業は1つのファイルを変更することです。
+
+
+Your JavaScript will be cached by browsers. Caching means that browsers will take a copy of your JavaScript and store it on the computer of the visitors surfing on your site. The next time this user loads the same script it will not be taken from your server but from their own computers — thus loading much faster.
+
+
+あなたのJavaScriptはブラウザにキャッシュされます。
+このキャッシングの仕組みは、まずあなたのサイトに来たネットサーファーのコンピューターにJavaScriptのコピーを格納します。
+もう一度そのユーザーが訪れた場合、そのユーザーはサーバーからではなく、コピーされたローカルコンピューターのスクリプトをロードします。
+なので、とても早くロードされます。
+
+
+
+You can easily find your script if you need to modify it, avoiding the need to scan through long HTML documents to find the place to fix a problem.
+
+更新が必要になったときに、スクリプトを簡単に探すことができます。長いHTMLドキュメントの中から、修正すべき箇所を延々と調べる必要はありません。
+
+Fixing errors becomes easier as a debugging tool or error console will tell you which file contains the error and reliably report the line number.
+
+
+エラーを修正するデバッグツールやエラーコンソールとして容易になり、エラーが含まれており、確実に行番号を報告しているファイルを教えてくれます。
+
+
+You can add as many JavaScript files as you want to a document, but there are several considerations to make before going down that route.
+
+
+一つのドキュメントに、必要なだけJavaScriptファイルを追加できます。しかしこの点に関してはいくつか留意する点があります。
+
+
+JavaScript and browser performance
+JavaScriptとブラウザーのパフォーマンス
+
+
+Cutting up a lot of JavaScript into different files, each dealing with one task at a time, is a great idea to keep your functionality easy to maintain and allow for quick bug-fixing. For example, you could have several script blocks like these:
+
+JavaScriptをタスクごと、異なるファイルに分割するのはよいアイデアです。管理が楽になりますし、バグの修正も容易です。例えば以下のようにスクリプトを分割できるでしょう:
+
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="base.js"></script>
+<script type="text/javascript" src="effects.js"></script>
+<script type="text/javascript" src="validation.js"></script>
+<script type="text/javascript" src="widgets.js"></script>
+
+However, the development benefits of this are diminished by the effect this has on the performance of your document. This differs slightly from browser to browser but the worst-case scenario (which is sadly enough still the most-used browser) does the following:
+
+
+しかしこのような開発上の利点はパフォーマンスの悪化という形で相殺されてしまいます。この副作用の程度はブラウザーごとに異なりますが、最もシェアが高いブラウザーで発生する最も悪いシナリオでは以下のようになります:
+
+
+
+Every time the browser encounters a script element, it will pause rendering (displaying) the document.
+
+
+script要素に達するたび、ブラウザーはドキュメントの描画を一時停止します。
+
+It will then load the JavaScript file defined in the src attribute (if you use a script on another server you also have to wait until the browser finds that server).
+
+
+それからブラウザーはsrc属性に記述されたJavaScriptファイルをロードします。他のサーバーのファイルを使用する場合、ブラウザーはサーバーを検索する必要があります。
+
+It then will execute the script before it goes on to accessing the next one.
+
+やっとスクリプトが実行され、それから次のスクリプトがロードされます。
+
+
+All of this means that the display of your web site is slowed down until all of these steps happen for all the scripts you include. This can become annoying for your visitors.
+
+
+このことは、入れた全てのスクリプトが実行されるまで、Webサイトのディスプレイ表示速度が遅くなってしまうことを意味しています。
+これはサイト訪問者をイライラさせてしまいます。
+
+One way around this is to use a backend script to create a single file from all the files you use. That way you have the benefit of keeping maintenance easy while simultaneously cutting down on delays to your web page display. There are several scripts like this on the web — one of them is written in PHP and available from Ed Eliot.
+
+この状況を回避する方法の一つは、使用するすべてのJavaScriptファイルを一つのファイルに統合するバックエンドスクリプトを使用することです。この方法ではスクリプトを分割することでメンテナンスを容易にするという利点を活かしたまま、Webページの表示遅延を防ぐことができます。Web上にはこれを実現するためのスクリプトがいくつか存在します。例えばEd EliotがPHPで書いたものがあります。
+
+
+The delay in display also defines where you want to put your JavaScript in the document.
+
+描画の遅延はJavaScriptをドキュメントのどこに配置するかにも影響を受けます。
