@@ -1,13 +1,13 @@
-The purpose of JavaScript
+# The purpose of JavaScript
 JavaScriptの目的
 
-Summary
+## Summary
 要約
 
 In this article, we discuss what JavaScript can be used for on the web, its downsides, and how to use it responsibly.
 この記事では、WebでJavaScriptがどう使えるか、マイナス面、信用できる使い方について書いています。
 
-Introduction
+## Introduction
 イントロダクション
 
 Now the Web Standards Curriculum has taken you through the core essential concepts of programming, it is time to take a step back from the details and take a high-level look at what you can actually do with JavaScript — why would you want to take the time to learn such a complicated subject, and use it on your web pages?
@@ -15,7 +15,8 @@ Web Standards Curriculum ではプログラミングの本質的概念につい�
 
 This is an interesting time, as the usage of JavaScript has moved away from a fringe knowledge matter to a mainstream web development skill over the last few years. Right now, it is difficult to get a job as a web developer without JavaScript skills.
 面白いことに、ここ数年でJavaScriptの使われ方はWeb開発技術の周辺知識から主流へと変化しました。
-How people came to like JavaScript
+
+## How people came to like JavaScript
 人々はどうやってJavaScriptを好きになったのか
 
 Computers used to be much slower and browsers were bad at interpreting JavaScript. Most developers came from a back-end development world. Back then, JavaScript just seemed like a bad idea.
@@ -26,43 +27,59 @@ On the other hand, the cost of hosting files was very high. This is where JavaSc
 
 Skip forward to today -- modern browsers have well-implemented JavaScript, computers are much faster, and bandwidth is a lot cheaper, so a lot of the negatives are less critical. However, cutting down on server round-trips by doing things in JavaScript still results in more responsive web applications and a better user experience.
 今日まで時間を進めてみましょう。モダンブラウザは良い実装のJavaScriptがあり、コンピュータはとても早くなり、バンド幅への負荷はとても少なくなったので、多くの欠点は気にしなくてよくなりました。
-The downside of JavaScript
-Even with all these improvements, there is still a catch: JavaScript is flaky. Not the language itself but the environment it is implemented in. You do not know what computer is on the receiving end of your web page, you do not know how busy the computer is with other things, and you do not know if some other JavaScript in another tab of the browser is grinding things down to a halt. Until browsers begin having different processing resources for different tabs and windows (also known as threads), this will always remain an issue. Multiple threading is made available to a certain degree by a new HTML5 feature called Web workers, and this has reasonable browser support.
 
+## The downside of JavaScript
+JavaScriptのマイナス面
+
+Even with all these improvements, there is still a catch: JavaScript is flaky. Not the language itself but the environment it is implemented in. You do not know what computer is on the receiving end of your web page, you do not know how busy the computer is with other things, and you do not know if some other JavaScript in another tab of the browser is grinding things down to a halt. Until browsers begin having different processing resources for different tabs and windows (also known as threads), this will always remain an issue. Multiple threading is made available to a certain degree by a new HTML5 feature called Web workers, and this has reasonable browser support.
+これらの改善があるにもかかわらず、いまだ「JavaScriptはあてにならない」という欠陥があります。それは言語そのものではなく、実装されている環境です。あなたはどんなコンピュータがあなたのWebページの受信するかを知りませんし、ブラウザのもう1つのタブで動くJavaScriptが落ちて急停止してもわかりません。これは、ブラウザが別のタブやウィンドウのために異なる処理リソース(スレッドとして知られる)を持つまで、問題として残るでしょう。マルチスレッドはWeb workersと呼ばれるHTML5の新しい機能である程度利用可能になります。
 
 In addition, JavaScript is frequently turned off in browsers because of security concerns, or because JavaScript is often used to annoy people rather than to improve their experience. For example, a lot of sites still try to pop-up new windows against your wishes, or cover the content with advertising until you click a link to get rid of it.
+さらに、JavaScriptはセキュリティ上の問題や、良い体験よりもむしろイライラすることが多いことを理由に、ブラウザでよく無効にされています。例えば、多くのサイトではいまだにユーザの意志に反して新しいウィンドウをポップアップしようとしたり、リンクをクリックしないと消えない広告でコンテンツを覆っていたりします。
 
-What JavaScript can do for you
+## What JavaScript can do for you
 JavaScriptで何ができるか
+
 Let’s take a step back and count the merits of JavaScript:
-では一歩戻って、JavaScriptのメリットを挙げてみましょう。
+では一歩立ち戻って、JavaScriptのメリットを挙げてみましょう。
+
 JavaScript is very easy to implement. All you need to do is put your code in the HTML document and tell the browser that it is JavaScript.
 JavaScriptは実装がとても容易です。必要なのは、HTML文書にあなたのコードを記述して、ブラウザにそれがJavaScriptコードであることを伝えることだけです。
+
 JavaScript works on web users’ computers — even when they are offline!
-JavaScriptは、Webユーザのコンピュータ上で動作します - たとえユーザーがオフラインだったとしても！
+JavaScriptは、Webユーザのコンピュータ上で動作します - たとえユーザがオフラインだったとしても！
+
 JavaScript allows you to create highly responsive interfaces that improve the user experience and provide dynamic functionality, without having to wait for the server to react and show another page.
-JavaScriptはユーザエクスペリエンスを向上し動的な機能を提供する、非常に応答性の高いインターフェースを作成することができます。サーバとやりとりして別のページを見せるために、サーバを待つ必要がありません。
+JavaScriptは非常に応答性の高いインターフェースを作成することができるため、ユーザエクスペリエンスを向上し、動的な機能を提供することができます。サーバとやりとりして別のページを見せるために、サーバを待つ必要がありません。
+
 JavaScript can load content into the document if and when the user needs it, without reloading the entire page — this is commonly referred to as Ajax.
-JavaScriptは、ユーザの必要に応じてコンテンツを文書に読み込むことができます。ページ全体をリロードする必要はありません — これは一般的にAjaxと呼ばれています。
+JavaScriptは、ユーザが必要としたときに、コンテンツを文書に読み込むことができます。ページ全体をリロードする必要はありません — これは一般的にAjaxと呼ばれています。
+
 JavaScript can test for what is possible in your browser and react accordingly — this is called Principles of unobtrusive JavaScript or sometimes defensive scripting.
-JavaScriptは、あなたのブラウザ内で何ができるかをテストし、それに応じただ動作を行うことができます — これは控えめなJavaScriptの原則と呼ばれたり、時に防御的なスクリプティングと呼ばれたりします。
+JavaScriptは、あなたのブラウザ内で何ができるかをテストし、それに応じた動作を行うことができます — これは控えめなJavaScriptの原則と呼ばれたり、時に防御的なスクリプティングと呼ばれたりします。
+
 JavaScript can help fix browser problems or patch holes in browser support — for example fixing CSS layout issues in certain browsers.
 JavaScriptはブラウザの問題をフィックスしたり、ブラウザサポートの穴を埋める助けを行うことができます — 例えば、いくつかのブラウザが抱えるCSSレイアウトの問題をフィックスするなどです。
-That is a lot for a language that until recently was laughed at by programmers favouring “higher programming languages”. One part of the renaissance of JavaScript is that we are building more and more complex web applications these days, and high interactivity either requires Flash (or other plugins) or scripting. JavaScript is arguably the best way to go, as it is a web standard, it is supported natively across browsers (more or less — some things differ across browsers, and these differences are discussed in appropriate places in the articles that follow this one), and it is compatible with other open web standards.
 
-“より高級なプログラミング言語”を好むプログラマからすると、（TODO）。JavaScriptのルネッサンスの一つに、今日ではより複雑なWebアプリケーションを構築することです。そして、Flash（もしくはその他のプラグイン）やスクリプティングを要した、高度に対話的な。JavaScriptはほぼ間違いなくベストな道です。Web標準ですし、ブラウザによってネイティブにサポートされています（程度の差はあります — 一部はブラウザによって異なります。それらの違いは、後続の記事の適切な箇所で述べられています）、そしてそれはその他のオープンなWeb標準と互換性があります。
-Common uses of JavaScript
+That is a lot for a language that until recently was laughed at by programmers favouring “higher programming languages”. One part of the renaissance of JavaScript is that we are building more and more complex web applications these days, and high interactivity either requires Flash (or other plugins) or scripting. JavaScript is arguably the best way to go, as it is a web standard, it is supported natively across browsers (more or less — some things differ across browsers, and these differences are discussed in appropriate places in the articles that follow this one), and it is compatible with other open web standards.
+言語について言えば、“より高級なプログラミング言語”を好むプログラマからは最近まで笑われていたようなことがたくさんあります。JavaScriptのルネッサンスが発生した理由の一つに、今日私たちがより複雑なWebアプリケーションを構築していること、そしてFlash（もしくは他のプラグイン）やスクリプティングを必要とするような高い対話性が求められたことにあります。（訳注: 日本語として意味が通りやすいよう、原文にないニュアンスをいくつか追加しました）JavaScriptはほぼ間違いなくベストな道です。Web標準ですし、ブラウザを横断してネイティブにサポートされています（程度の差はあります — 一部はブラウザによって差異があります。それらの違いは、後続の記事の適切な箇所で述べられています）し、他のオープンなWeb標準とも互換性があります。
+
+## Common uses of JavaScript
 JavaScriptの一般的な使用法
+
 The usage of JavaScript has changed over the years we have been using it. At first, JavaScript interaction with the site was mostly limited to interacting with forms, giving feedback to the user, and detecting when they do certain things. We used alert() to notify the user of something (see Figure 1),confirm() to ask if something is OK to do and either prompt() or a form field to get user input.
-JavaScriptの使い道は、私たちがそれを使ってきた数年の間に変わってきました。はじめは、JavaScriptとサイトのインタラクションは、フォームによるインタラクション、ユーザーに対するフィードバック、そして（TODO）にほとんど限定されていました。何かを通知するために alert() を用い（図1を見てください）、何かがOKかどうかを尋ねるために confirm() を用い、ユーザの入力を取得するために prompt() やフォームフィールドを用いてきました。
+JavaScriptの使い道は、私たちがそれを使ってきた数年の間に変わってきました。はじめは、JavaScriptとサイトのインタラクションは、フォームによるやりとり、ユーザーに対するフィードバック、そしてユーザが何かをしようとした時に誘導するといったことにほとんど限定されていました。何かを通知するために alert() を用い（図1を見てください）、何かがOKかどうかを尋ねるために confirm() を用い、ユーザの入力を取得するために prompt() やフォームフィールドを用いてきました。
+
 Figure 1: Telling the end user about errors using an alert() statement was all we could do in the early days of JavaScript. Neither pretty nor subtle.
 図1: エンドユーザにエラーを伝えるために alert() 文を用いるのが、JavaScriptの初期にできる全てのことでした。可愛くもイケてもいません。
-This led mostly to validation scripts that stopped the user to send a form to the server when there was a mistake, and simple converters and calculators. In addition, we managed to build highly useless things like prompts asking the user for their name just to print it out immediately afterwards.
-入力ミスがあった時に、ユーザがサーバにフォームを送信するのを停止するような値チェックのスクリプトや、単純なコンバータや計算を行うのが主でした。加えて名前を尋ねてすぐにそれをプリントするといったような、ほとんど使えないこともしていました。
-Another thing we used was document.write() to add content to the document. We also worked with pop-up windows and frames and lost many a nerve and pulled out hair trying to make them talk to each other. Thinking about most of these technologies should make any developer rock forward and backward and curl up into a fetal position stammering “make them go away”, so let's not dwell on these things — there are better ways to use JavaScript!
-他には、文書にコンテンツを追加するために document.write() を使っていました。私たちはポップアップウィンドウやフレーム、（TODO）こうした技術の殆どについて考えることは、 — JavaScriptを使うよりよい道があります！
 
-Enter DOM scripting
+This led mostly to validation scripts that stopped the user to send a form to the server when there was a mistake, and simple converters and calculators. In addition, we managed to build highly useless things like prompts asking the user for their name just to print it out immediately afterwards.
+入力ミスがあった時に、ユーザがサーバにフォームを送信するのを停止するような値チェックのスクリプトや、単純なコンバータや計算を行うのが主でした。加えて、名前を尋ねてすぐにそれをプリントするといったような、全然役に立たないようなことにも使われていました。
+
+Another thing we used was document.write() to add content to the document. We also worked with pop-up windows and frames and lost many a nerve and pulled out hair trying to make them talk to each other. Thinking about most of these technologies should make any developer rock forward and backward and curl up into a fetal position stammering “make them go away”, so let's not dwell on these things — there are better ways to use JavaScript!
+他には、文書にコンテンツを追加するために document.write() を使っていました。私たちはまた、ポップアップウィンドウやフレーム同士を対話させようと頑張って取り乱したり、髪の毛をかきむしったりしていました。こうした技術について頭を悩ませる開発者はみな、うろうろと行ったり来たりしたり、「こいつらをどこかに消してくれ」と口ごもりながら胎児のような姿勢で丸まってしまいます。こうした事柄に頭を悩ませるのはやめましょう — JavaScriptを使うよりよい道があります！
+
+### Enter DOM scripting
 DOM Scripting 入門
 
 When browsers started supporting and implementing the Document Object Model (DOM), which allows us to have much richer interaction with web pages, JavaScript started to get more interesting.
@@ -74,6 +91,7 @@ The DOM is an object representation of the document. For example, the previous p
 a text node containing "When browsers started supporting and implementing the " as its nodeValue;
 an element node with a nodeName of a;
 another text node with a nodeValue of ", which allows us to have much richer interaction with web pages, JavaScript started to get more interesting.".
+
 DOMはドキュメントに物体を表現するものの一つです。例えば、DOMについて語っている前の段落（view sourceを用いてソースを確認してみてください）は、pというノード名をもった要素です。それには3つの子ノードが含まれています:
 　・”ブラウザが” をノードの値として持っているテキストノード
 　・ノード名がaの要素ノード
@@ -85,34 +103,59 @@ You could also represent this paragraph visually using a tree diagram, as seen i
 
 子ノードaは同様に、”http://www.w3.org/DOM/”を値に持つhrefと呼ばれる属性ノードと、”Document Object Model (DOM)”を値に持つテキストノードを持っています。
 図2の通り、この段落は次のようなツリー図を用いて図解できます。
+
 Figure 2: A visual representation of our sample DOM tree.
+
 In human words, you can say that the DOM explains both the types, the values, and the hierarchy of everything in the document — you do not need to know anything more for now. For more information on the DOM, check out the Traversing the DOM article later in the course.
+
 Using the DOM you can:
+
 Access any element in the document and manipulate its look, content, and attributes.
+
 Create new elements and content and apply them to the document when and if they are needed.
+
 This means that we do not have to rely on windows, frames, forms, and ugly alerts any longer, and can give feedback to the user in the document in a nicely styled manner, as indicated in Figure 3.
+
 Figure 3: Using the DOM you can create nicer and less intrusive error messages.
+
 Together with event handling, this is a very powerful arsenal to create interactive and beautiful interfaces.
+
 Event handling means that our code reacts to things that happen in the browser. This could be things that happen automatically — like the page finishing loading — but most of the time we react to what the user did to the browser.
+
 Users might resize the window, scroll the page, press certain keys, or click on links/buttons/elements using the mouse. With event handling, we can wait for these things to happen and tell the web page to respond to these actions as we wish. Whereas in the past, clicking any link would take the site visitor to another document, we can now hijack this functionality and do something else like showing and hiding a panel or taking the information in the link and using it to connect to a web service.
+
 Events are covered in much more detail in the Handling events in JavaScript article later in the course.
 
-Other modern uses of JavaScript
-And this is basically what we are doing these days with JavaScript. We enhance the old, tried and true web interface — clicking links, entering information and sending off forms, etc. — to be more responsive to the end user. For example:
-A sign-up form can check if your user name is available when you enter it, preventing you from having to endure a frustrating reload of the page.
-A search box can give you suggested results while you type, based on what has been entered so far (for example “bi” could bring up suggestions to choose from that contain this string, such as “bird”, “big”, and “bicycle”). This usage pattern is called autocomplete.
-Information that changes constantly can be loaded periodically without the need for user interaction, for example sports match results or stock market tickers.
-Information that is a nice-to-have and runs the risk of being redundant to some users can be loaded when and if the user chooses to access it. For example the navigation menu of a site could be 6 links but display links to deeper pages on-demand when the user activates a menu item.
-JavaScript can fix layout issues. Using JavaScript, you can find the position and area of any element on the page, and the dimensions of the browser window. Using this information you can prevent overlapping elements and other such issues. Say for example you have a menu with several levels; by checking that there is space for the sub-menu to appear before showing it, you can prevent scroll-bars or overlapping menu items.
-JavaScript can enhance the interfaces HTML gives us. While it is nice to have a text input box you might want to have a combo box allowing you to choose from a list of preset values or enter your own. Using JavaScript, you can enhance a normal input box to do that.
-You can use JavaScript to animate elements on a page — for example to show and hide information, or highlight specific sections of a page — this can make for a more usable, richer user experience. There is more information on this in the JavaScript animation article later on in the course.
-Using JavaScript sensibly and responsibly
-There is not much you cannot do with JavaScript — especially when you mix it with other technologies like Canvas or SVG. However, with great power comes great responsibility, and you should always remember the following when using JavaScript:
-JavaScript might not be available — this is easy to test for, so not really a problem. However, things that depend on JavaScript should be created with this in mind, and you should be careful that your site does not break (i.e. essential functionality is not available) if JavaScript is not available.
-If the use of JavaScript does not aid the user in reaching a goal more quickly and efficiently you are probably using it wrong.
-Using JavaScript, we often break conventions that people have got used to over years of using the web (for example, clicking links to go to other pages, or a little basket icon meaning “shopping cart”). Whilst these usage patterns might be outdated and inefficient, changing them still means making users change their ways — and this makes humans feel uneasy. We like being in control and once we understand something, it is hard for us to deal with change. Your JavaScript solutions should feel naturally better than the previous interaction, but not so different that the user cannot relate to it via their previous experience. If you manage to get a site visitor saying “ah ha — this means I do not have to wait” or “Cool — now I do not have to take this extra annoying step” — you have got yourself a great use for JavaScript.
-JavaScript should never be a security measure. If you need to prevent users from accessing data or you are likely to handle sensitive data, then do not rely on JavaScript. Any JavaScript protection can easily be reverse-engineered and overcome, as all the code is available to read on the client machine. Also, users can just turn JavaScript off in their browsers.
-Conclusion
-JavaScript is a wonderful technology to use on the web. It is not that hard to learn and it is very versatile. It plays nicely with other web technologies — such as HTML and CSS — and can even interact with plugins such as Flash. JavaScript allows us to build highly responsive user interfaces, prevent frustrating page reloads, and even fix support issues for CSS. Using the right browser add-ons (such as Google Gears or Yahoo Browser Plus) you can even use JavaScript to make online systems available offline and sync automatically once the computer goes online.
-JavaScript is also not restricted to browsers. The speed and small memory footprint of JavaScript in comparison to other languages brings up more and more uses for it — from automating repetitive tasks in programs like Illustrator, up to using it as a server-side language with a standalone parser. The future is wide open.
+### Other modern uses of JavaScript
 
+And this is basically what we are doing these days with JavaScript. We enhance the old, tried and true web interface — clicking links, entering information and sending off forms, etc. — to be more responsive to the end user. For example:
+
+A sign-up form can check if your user name is available when you enter it, preventing you from having to endure a frustrating reload of the page.
+
+A search box can give you suggested results while you type, based on what has been entered so far (for example “bi” could bring up suggestions to choose from that contain this string, such as “bird”, “big”, and “bicycle”). This usage pattern is called autocomplete.
+
+Information that changes constantly can be loaded periodically without the need for user interaction, for example sports match results or stock market tickers.
+
+Information that is a nice-to-have and runs the risk of being redundant to some users can be loaded when and if the user chooses to access it. For example the navigation menu of a site could be 6 links but display links to deeper pages on-demand when the user activates a menu item.
+
+JavaScript can fix layout issues. Using JavaScript, you can find the position and area of any element on the page, and the dimensions of the browser window. Using this information you can prevent overlapping elements and other such issues. Say for example you have a menu with several levels; by checking that there is space for the sub-menu to appear before showing it, you can prevent scroll-bars or overlapping menu items.
+
+JavaScript can enhance the interfaces HTML gives us. While it is nice to have a text input box you might want to have a combo box allowing you to choose from a list of preset values or enter your own. Using JavaScript, you can enhance a normal input box to do that.
+
+You can use JavaScript to animate elements on a page — for example to show and hide information, or highlight specific sections of a page — this can make for a more usable, richer user experience. There is more information on this in the JavaScript animation article later on in the course.
+
+## Using JavaScript sensibly and responsibly
+There is not much you cannot do with JavaScript — especially when you mix it with other technologies like Canvas or SVG. However, with great power comes great responsibility, and you should always remember the following when using JavaScript:
+
+JavaScript might not be available — this is easy to test for, so not really a problem. However, things that depend on JavaScript should be created with this in mind, and you should be careful that your site does not break (i.e. essential functionality is not available) if JavaScript is not available.
+
+If the use of JavaScript does not aid the user in reaching a goal more quickly and efficiently you are probably using it wrong.
+
+Using JavaScript, we often break conventions that people have got used to over years of using the web (for example, clicking links to go to other pages, or a little basket icon meaning “shopping cart”). Whilst these usage patterns might be outdated and inefficient, changing them still means making users change their ways — and this makes humans feel uneasy. We like being in control and once we understand something, it is hard for us to deal with change. Your JavaScript solutions should feel naturally better than the previous interaction, but not so different that the user cannot relate to it via their previous experience. If you manage to get a site visitor saying “ah ha — this means I do not have to wait” or “Cool — now I do not have to take this extra annoying step” — you have got yourself a great use for JavaScript.
+
+JavaScript should never be a security measure. If you need to prevent users from accessing data or you are likely to handle sensitive data, then do not rely on JavaScript. Any JavaScript protection can easily be reverse-engineered and overcome, as all the code is available to read on the client machine. Also, users can just turn JavaScript off in their browsers.
+
+## Conclusion
+JavaScript is a wonderful technology to use on the web. It is not that hard to learn and it is very versatile. It plays nicely with other web technologies — such as HTML and CSS — and can even interact with plugins such as Flash. JavaScript allows us to build highly responsive user interfaces, prevent frustrating page reloads, and even fix support issues for CSS. Using the right browser add-ons (such as Google Gears or Yahoo Browser Plus) you can even use JavaScript to make online systems available offline and sync automatically once the computer goes online.
+
+JavaScript is also not restricted to browsers. The speed and small memory footprint of JavaScript in comparison to other languages brings up more and more uses for it — from automating repetitive tasks in programs like Illustrator, up to using it as a server-side language with a standalone parser. The future is wide open.
